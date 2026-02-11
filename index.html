@@ -39,7 +39,7 @@
         position: absolute;
         top: -10%;
         color: rgba(255, 20, 147, 0.4);
-        font-size: 25px; /* Bigger hearts */
+        font-size: 25px;
         user-select: none;
         animation: fall linear forwards;
         z-index: 1;
@@ -54,7 +54,7 @@
         z-index: 10;
         padding: 20px;
         width: 100%;
-        max-width: 600px; /* Wider container for bigger elements */
+        max-width: 600px;
     }
 
     .screen {
@@ -64,23 +64,38 @@
 
     #gift-screen { display: block; }
 
-    /* BIGGER GIFS */
+    /* Standard GIF styling */
     .display-gif {
         width: 100%;
-        max-width: 350px; /* Increased from 250px */
+        max-width: 350px; 
         border-radius: 25px;
         box-shadow: 0 15px 35px rgba(255, 20, 147, 0.3);
         margin-bottom: 30px;
         border: 5px solid white;
     }
 
-    /* BIGGER TEXT & REMOVED BOXES FOR MESSAGES */
+    /* FINAL IMAGE - SOFT GLOW & TIGHT SPACING */
+    .final-image-glow {
+        width: 100%;
+        max-width: 500px; 
+        border-radius: 20px;
+        margin-bottom: -20px; /* Reduced gap */
+        border: none;
+        filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.4));
+        animation: pulseGlow 3s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+        from { filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.3)); }
+        to { filter: drop-shadow(0 0 12px rgba(255, 20, 147, 0.5)); }
+    }
+
     .intro-text, .distance-text, .personal-note {
         font-style: italic;
         color: #ff1493; 
         line-height: 1.5;
-        font-size: 1.6rem; /* Much bigger text */
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9); /* Text glow for readability without a box */
+        font-size: 1.6rem;
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
         padding: 10px;
         margin: 0 auto;
     }
@@ -100,7 +115,6 @@
         50% { opacity: 0.9; }
     }
 
-    /* Question Box - We keep this one contained for button logic */
     .question-box {
         background: rgba(255, 255, 255, 0.85); 
         padding: 40px;
@@ -112,7 +126,7 @@
 
     .question-box h1 {
         color: #ff0000; 
-        font-size: 2.2rem; /* Bigger Heading */
+        font-size: 2.2rem;
         margin-bottom: 25px;
     }
 
@@ -138,19 +152,18 @@
     .distance-text {
         font-style: italic;
         color: #ff1493; 
-        line-height: 2; /* Spaced out beautifully */
-        font-size: 1.5rem; /* Slightly adjusted to fit mobile screens without cutting */
+        line-height: 2;
+        font-size: 1.5rem;
         text-align: center;
         text-shadow: 2px 2px 8px rgba(255, 255, 255, 1);
-        width: 100%; /* Use almost the full width to prevent sentence cutting */
+        width: 100%;
         max-width: 800px;
         margin: 0 auto;
-        word-wrap: normal;
-        overflow-wrap: normal;
     }
+
     button {
         padding: 20px 40px;
-        font-size: 1.4rem; /* Bigger Buttons */
+        font-size: 1.4rem;
         border: none;
         border-radius: 12px;
         cursor: pointer;
@@ -162,11 +175,11 @@
     #noBtn { background: #ffc0cb; color: #d02090; }
 
     .final-note {
-        font-size: 2.5rem; /* Massive final text */
+        font-size: 2.4rem;
         font-weight: bold;
         color: #ff0000; 
-        margin-top: 30px;
-        line-height: 1.3;
+        margin-top: -50px; /* Pulls text closer to pic */
+        line-height: 1.2;
         text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
     }
 
@@ -194,10 +207,10 @@
         <span class="small-tap">(Tap to continue)</span>
     </div>
 
-  <div id="distance-screen" class="screen" onclick="showScreen('question-screen')">
+    <div id="distance-screen" class="screen" onclick="showScreen('question-screen')">
         <div class="distance-screen-content">
             <p class="distance-text">
-                Distance can’t stop me from loving you <br> this way.<br><br>
+                Distance can’t stop me from loving you this way.<br><br>
                 No matter how far apart we are, my feelings for you stay the same.<br><br>
                 So I just want to ask you...
             </p>
@@ -227,11 +240,10 @@
     </div>
 
     <div id="final-screen" class="screen">
-        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3NwNmwwOHh1cGFjcTdld2RkN3h2cm1jMDEzMmRidHF5anNsZTh1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" class="display-gif">
+        <img src="pic.svg" class="final-image-glow" alt="Our Special Moment">
         <div class="final-note">
             Happy Valentine's Day!<br>
-            See you soonest, my Maldita! <br>
-            
+            See you soonest,<br> my Maldita! 
         </div>
     </div>
 </div>
