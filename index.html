@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A Special Surprise ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Georgia', serif;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: #fcf6f0; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #d02090; 
+    }
+
+    .sticker-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('V.svg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .heart-bg {
+        position: absolute;
+        top: -10%;
+        color: rgba(255, 20, 147, 0.4);
+        font-size: 25px; /* Bigger hearts */
+        user-select: none;
+        animation: fall linear forwards;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(110vh); }
+    }
+
+    .container {
+        text-align: center;
+        z-index: 10;
+        padding: 20px;
+        width: 100%;
+        max-width: 600px; /* Wider container for bigger elements */
+    }
+
+    .screen {
+        display: none;
+        animation: fadeIn 0.8s ease;
+    }
+
+    #gift-screen { display: block; }
+
+    /* BIGGER GIFS */
+    .display-gif {
+        width: 100%;
+        max-width: 350px; /* Increased from 250px */
+        border-radius: 25px;
+        box-shadow: 0 15px 35px rgba(255, 20, 147, 0.3);
+        margin-bottom: 30px;
+        border: 5px solid white;
+    }
+
+    /* BIGGER TEXT & REMOVED BOXES FOR MESSAGES */
+    .intro-text, .distance-text, .personal-note {
+        font-style: italic;
+        color: #ff1493; 
+        line-height: 1.5;
+        font-size: 1.6rem; /* Much bigger text */
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9); /* Text glow for readability without a box */
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .small-tap {
+        font-size: 1rem;
+        color: #8b0000; 
+        opacity: 0.8;
+        display: block;
+        margin-top: 25px;
+        font-weight: bold;
+        animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.9; }
+    }
+
+    /* Question Box - We keep this one contained for button logic */
+    .question-box {
+        background: rgba(255, 255, 255, 0.85); 
+        padding: 40px;
+        border-radius: 30px;
+        border: 3px solid #ff69b4;
+        border-top: 10px solid #ff0000; 
+        box-shadow: 0 20px 50px rgba(255, 105, 180, 0.4);
+    }
+
+    .question-box h1 {
+        color: #ff0000; 
+        font-size: 2.2rem; /* Bigger Heading */
+        margin-bottom: 25px;
+    }
+
+    .buttons { 
+        position: relative; 
+        height: 150px; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .distance-screen-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .distance-text {
+        font-style: italic;
+        color: #ff1493; 
+        line-height: 2; /* Spaced out beautifully */
+        font-size: 1.5rem; /* Slightly adjusted to fit mobile screens without cutting */
+        text-align: center;
+        text-shadow: 2px 2px 8px rgba(255, 255, 255, 1);
+        width: 100%; /* Use almost the full width to prevent sentence cutting */
+        max-width: 800px;
+        margin: 0 auto;
+        word-wrap: normal;
+        overflow-wrap: normal;
+    }
+    button {
+        padding: 20px 40px;
+        font-size: 1.4rem; /* Bigger Buttons */
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: transform 0.2s;
+    }
+
+    #yesBtn { background: #ff1493; color: white; box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4); }
+    #noBtn { background: #ffc0cb; color: #d02090; }
+
+    .final-note {
+        font-size: 2.5rem; /* Massive final text */
+        font-weight: bold;
+        color: #ff0000; 
+        margin-top: 30px;
+        line-height: 1.3;
+        text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="sticker-bg"></div>
+
+<div class="container">
+    <div id="gift-screen" class="screen" onclick="showScreen('flower-screen')">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnpqejlvNmd4NnU1d3h2azg2eWhxcTB6aWk2czdrOGM4MW16Zmp3eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/rzuXNUP9o4W79Np7kr/giphy.gif" class="display-gif">
+        <p class="intro-text">From miles away, but close in heart.</p>
+        <span class="small-tap">(Tap to continue)</span>
+    </div>
+
+    <div id="flower-screen" class="screen" onclick="showScreen('distance-screen')">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnU3eGM5cWF2c3Y0NXF0d2N0Z2R3ZW4xYXFuNW1vdDV3ZDIweWNiayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/6Ee25N9KcBPtSrJFVz/giphy.gif" class="display-gif">
+        <p class="intro-text">Before anything else, here are flowers for you, my pretty future wife.</p>
+        <span class="small-tap">(Tap to continue)</span>
+    </div>
+
+  <div id="distance-screen" class="screen" onclick="showScreen('question-screen')">
+        <div class="distance-screen-content">
+            <p class="distance-text">
+                Distance can’t stop me from loving you <br> this way.<br><br>
+                No matter how far apart we are, my feelings for you stay the same.<br><br>
+                So I just want to ask you...
+            </p>
+            <span class="small-tap">(Tap to continue)</span>
+        </div>
+    </div>
+
+    <div id="question-screen" class="screen">
+        <div class="question-box">
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZWdqejN3NDJ1MGE2ampqNnQ5NHZybWJ3NHN2anJ1bXJzZWljYzUyaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/sc54SIQ5QekyhMvat9/giphy.gif" class="display-gif">
+            <h1>Will you be my Valentine?</h1>
+            <div class="buttons" id="btnContainer">
+                <button id="yesBtn" onclick="showScreen('yes-message-screen')">Yes</button>
+                <button id="noBtn">No</button>
+            </div>
+            <p style="font-size: 0.9rem; font-style: italic; margin-top: 15px;">try to click the no babe, the website won't allow you</p>
+        </div>
+    </div>
+
+    <div id="yes-message-screen" class="screen" onclick="showScreen('final-screen')">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHcyZWIxMjJxb205b2czNnV6b2ZmNW5ocGh3dTloYndhdms0dWkzMSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IzXiddo2twMmdmU8Lv/giphy.gif" class="display-gif">
+        <div class="personal-note">
+            Babe! I'm really glad u said YES! I wish I was there with you right now but distance ain’t stopping nothing. <br><br>
+            We still finna make Valentine’s Day absolutely special. I love you so much babe, and I’m so lucky you’re mine.
+        </div>
+        <span class="small-tap">(One last tap...)</span>
+    </div>
+
+    <div id="final-screen" class="screen">
+        <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3NwNmwwOHh1cGFjcTdld2RkN3h2cm1jMDEzMmRidHF5anNsZTh1bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1JmGiBtqTuehfYxuy9/giphy.gif" class="display-gif">
+        <div class="final-note">
+            Happy Valentine's Day!<br>
+            See you soonest, my Maldita! <br>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    function showScreen(screenId) {
+        const screens = document.querySelectorAll('.screen');
+        screens.forEach(s => s.style.display = 'none');
+        const target = document.getElementById(screenId);
+        target.style.display = 'block';
+    }
+
+    const noBtn = document.getElementById("noBtn");
+    const btnContainer = document.getElementById("btnContainer");
+
+    function moveNoButton() {
+        noBtn.style.position = "absolute";
+        const maxX = btnContainer.clientWidth - noBtn.offsetWidth;
+        const maxY = btnContainer.clientHeight - noBtn.offsetHeight;
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); });
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-bg');
+        const types = ['💖', '❤️', '🌸'];
+        heart.innerHTML = types[Math.floor(Math.random() * types.length)]; 
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
